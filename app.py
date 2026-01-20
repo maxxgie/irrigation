@@ -21,17 +21,12 @@ if st.button("Compute Irrigation"):
     sim.compute()
     output = sim.output['irrigation']
 
-    # Interpretation
     if output < 40:
         level = "LOW"
-        color = "🟢"
     elif output < 70:
         level = "MEDIUM"
-        color = "🟡"
     else:
         level = "HIGH"
-        color = "🔴"
 
-    st.subheader("Result")
-    st.metric("Irrigation Value", f"{output:.2f}")
-    st.success(f"{color} Recommended Irrigation Level: **{level}**")
+    st.success(f"Irrigation Level: **{level}**")
+    st.write("Numeric Value:", round(output, 2))
